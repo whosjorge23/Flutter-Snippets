@@ -5,7 +5,7 @@ UpgradeAlert(
     showLater: false,
     messages: CustomMessages(),
     onUpdate: () {
-      if (Platform.isAndroid) {
+      /*if (Platform.isAndroid) {
         LaunchURLService.launchInBrowser(
           Uri(
             scheme: 'https',
@@ -20,6 +20,16 @@ UpgradeAlert(
             host: 'apps.apple.com',
             path: '/app/appName/id',
           ),
+        );
+      }*/
+      //It is prefered the code below
+      if (Platform.isAndroid) {
+        StoreRedirect.redirect(
+          androidAppId: 'com.example.appName',
+        );
+      } else if (Platform.isIOS) {
+        StoreRedirect.redirect(
+          iOSAppId: '1234567890',
         );
       }
       return true;
