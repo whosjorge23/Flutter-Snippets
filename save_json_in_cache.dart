@@ -1,4 +1,4 @@
-List<Vessel> myObjectsList = [];
+List<Object> myObjectsList = [];
 
 fetchObjects() async {
     final prefs = await SharedPreferences.getInstance();
