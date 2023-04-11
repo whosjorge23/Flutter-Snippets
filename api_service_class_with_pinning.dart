@@ -47,3 +47,14 @@ class ApisService {
     }
   }
  }
+
+Future<String> readAsset(String filePath) async {
+    return await rootBundle.loadString(filePath);
+  }
+
+  ConfigConstants.keyPinning = await readAsset('lib/assets/key.txt');
+  ConfigConstants.keyPinningProv = await readAsset('lib/assets/prov_key.txt');
+  // print('File contents: ${ConfigConstants.keyPinning}');
+  // print('File contents: ${ConfigConstants.keyPinningProv}');
+  // print(
+  //     "Contained: ${ConfigConstants.keyPinning.contains(ConfigConstants.keyPinning)}");
