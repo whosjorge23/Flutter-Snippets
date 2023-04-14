@@ -2,6 +2,7 @@ buildDialog({
     required bool isDismissable,
     required String text,
     required VoidCallback onClick,
+		required int containerHeight,
   }) {
     return showDialog<String>(
       context: context,
@@ -15,7 +16,7 @@ buildDialog({
           ),
         ),
         content: Container(
-          height: 50,
+          height: containerHeight,
           child: Text(text),
         ),
         actions: <Widget>[
