@@ -24,7 +24,7 @@ class ObjectApisService {
     "content-type": "application/json"
   };
 
-  static Future<List<Ojbect>> getVessels() async {
+  static Future<List<Ojbect>> getObjects() async {
     final url = Uri.parse("your-endpoint.com");
     http.Response response =
         await AuthenticatedHttpClient().get(url, headers: headers);
@@ -43,6 +43,18 @@ class ObjectApisService {
       printResponse(response);
       return [];
     }
+  }
+    
+    static Future<List<Object>> getCachedObjects() async {
+    List<Vessel> objectsList = [];
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getString("objectsList") != null) {
+      var objects = prefs.getString("objectsList");
+      for (var item in jsonDecode(objects!)) {
+        objectsList.add(Object.fromJson(item));
+      }
+    }
+    return objectsList;
   }
 
   static void printResponse(http.Response response) {
