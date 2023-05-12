@@ -24,6 +24,14 @@ class InfoDeviceConstants {
     }
   }
 
+	bool isTabletPortrait() {
+    if (deviceOrentation == Orientation.portrait){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   void portraitModeOnly() {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
