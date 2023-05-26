@@ -1,0 +1,4 @@
+
+MaterialApp(
+showPerformanceOverlay: true,
+)
