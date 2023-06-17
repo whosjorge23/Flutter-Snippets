@@ -57,13 +57,13 @@ class ContainerHourlyWeather extends StatelessWidget {
                         return Column(
                           children: [
                             Text(
-                              " ${formatTimeString(timeStamps[index])} ",
+                              " ${hour} ",
                               style: TextStyle(
                                   color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),
                             ),
-                            Image.network("${weatherConditions.content?.items?.first.parameters?.descriptors![timeStamps[index]]!["weather_descriptor"]?.icon}", scale: 2),
+                            Image.network("imageURL", scale: 2),
                             Text(
-                                  " ${weatherConditions.content?.items?.first.parameters?.airTemp![timeStamps[index]]}°",
+                                  " ${temperature}°",
                                 style: TextStyle(
                                     color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),
                             ),
