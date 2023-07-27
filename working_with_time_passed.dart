@@ -31,11 +31,24 @@ String get newsTime {
       if (difference.inDays < 1) {
         // Mostra i minuti trascorsi tra now e date.day
         final minutes = difference.inMinutes;
-        time = '$minutes${$strings.minutes_abbreviate}';
+        if (minutes > 60) {
+          // Verifico se sono passati più di 60 minuti
+          final hours = (minutes / 60).floor();
+          final remainingMinutes = minutes % 60;
+          if (remainingMinutes == 0) {
+            // Elimino il resto dei minuti se l'ora non contiene minuti
+            time = '${hours}h ago';
+          } else {
+            // Aggiungo il resto dei minuti se l'ora contiene minuti
+            time = '${hours}h${remainingMinutes.toString().padLeft(2, '0')}m ago';
+          }
+        } else {
+          time = '${minutes}m ago';
+        }
       } else if (difference.inDays < 7) {
         // Mostra i giorni trascorsi
         final days = difference.inDays;
-        time = '$days${$strings.days_abbreviate}';
+        time = '${days}d ago';
       } else {
         // Mostra la data completa
         time = DateFormat("yyyy-MM-dd").format(date!);
