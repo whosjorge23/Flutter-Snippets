@@ -34,6 +34,18 @@ return MaterialApp.router(
                   );
                 },
               )
+            GoRoute(
+              path: 'page',
+              builder: (context, state) {
+                Map<String, Object> pageMap = state.extra as Map<String, Object>;
+                return MaterialPage(
+                  child: BillDetails(
+                    contract: billDetailsMap['contract']! as ContractModel,
+                    contractAccount: billDetailsMap['contractAccount']! as ContractAccountModel,
+                  ),
+                  );
+            },
+            ),
             ],
           ),
         ],
